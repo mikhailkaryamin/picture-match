@@ -1,0 +1,30 @@
+@font-face {
+  font-family: 'Bangers';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('../assets/fonts/Bangers-Regular.ttf');
+  src: local('Bangers'),
+    local('Bangers-Regular')
+    url('../assets/fonts/Bangers-Regular.ttf') format('ttf')
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Bangers', 'Arial', sans-serif;
+  color: #fff;
+  background: rgb(58,79,180);
+  background: linear-gradient(45deg, rgba(58,79,180,1) 25%, rgba(252,69,205,1) 75%);
+}

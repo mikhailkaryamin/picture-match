@@ -1,10 +1,14 @@
 import React from 'react';
 
+import GameContainer from '../Game-container/GameContainer';
+import MainScreen from '../Main-screen/MainScreen';
+
+
 function App () {
   return(
-    <div>
-      
-    </div>
+    <GameContainer>
+      <MainScreen />
+    </GameContainer>
   )
 }
 

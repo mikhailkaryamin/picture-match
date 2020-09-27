@@ -1,14 +1,17 @@
 import React from 'react';
 
-import Menu from '../Menu/Menu'
+import Container from '../Container/Container';
+import Menu from '../Menu/Menu';
 
 const MainScreen = () => {
   return (
-    <div className="main-screen">
-      <div className="main-screen__wrapper">
-        <Menu />
+    <Container>
+      <div className="main-screen">
+        <div className="main-screen__wrapper">
+          <Menu />
+        </div>
       </div>
-    </div>
+    </Container>
   )
 }
 

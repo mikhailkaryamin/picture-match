@@ -1,0 +1,12 @@
+.game-settings {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.game-settings__item {
+
+  &:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+}

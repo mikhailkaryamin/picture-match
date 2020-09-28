@@ -22,10 +22,12 @@ const Frame: React.FC<Props> = ({ cards, sizeFrame}: Props) => {
 
           return (
             <li className={`frame__card frame__card--${sizeFrame[0]}x${sizeFrame[1]}`}>
-              <Card
-                img={imgSrc}
-                title={title}
-              />
+              <div className="frame__card-wrapper">
+                <Card
+                  img={imgSrc}
+                  title={title}
+                />
+              </div>
             </li>
           )
         })}

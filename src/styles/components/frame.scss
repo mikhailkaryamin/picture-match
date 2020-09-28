@@ -1,22 +1,58 @@
-.frame {
-  width: 100%;
-  height: 100%;
-}
-
 .frame__cards-list {
   display: flex;
   flex-wrap: wrap;
+  width: 600px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
+.frame__card-wrapper {
+  width: 100%;
+  height: 12.5rem;
+}
+
 .frame__card {
-  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+
+  &--2x2 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
 
   &--2x3 {
     flex: 0 0 33.33333%;
-    height: 35vh;
     max-width: 33.33333%;
   }
+
+  &--3x4 {
+    flex: 0 0 25%;
+    max-width: 25%;
+    padding: .7rem;
+
+    .frame__card-wrapper {
+      height: 8.5rem;
+    }
+  }
+
+  &--4x5 {
+    flex: 0 0 20%;
+    max-width: 20%;
+    padding: .6rem;
+    .frame__card-wrapper {
+      height: 6.5rem;
+    }
+  }
+
+  &--5x6 {
+    flex: 0 0 16.66666%;
+    max-width: 16.66666%;
+    padding: .4rem;
+    .frame__card-wrapper {
+      height: 5.5rem;
+    }
+  }
 }
+

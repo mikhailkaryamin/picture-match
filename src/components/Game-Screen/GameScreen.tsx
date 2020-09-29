@@ -4,56 +4,65 @@ import Container from '../Container/Container';
 import Frame from '../Frame/Frame';
 import GameSettings from '../Game-Settings/Game-Settings';
 import ScoreBoard from '../Scoreboard/Scoreboard';
+import Animals from '../../assets/animals/index';
 
 const MOCK_CARDS = [
-  {
-    imgSrc: 'src',
-    title: 'Card'
-  },
-  {
-    imgSrc: 'src',
-    title: 'Card'
-  },
-  {
-    imgSrc: 'src',
-    title: 'Card'
-  },
-  {
-    imgSrc: 'src',
-    title: 'Card'
-  },
-  {
-    imgSrc: 'src',
-    title: 'Card'
-  },
-  {
-    imgSrc: 'src',
-    title: 'Card'
-  },
-  {
-    imgSrc: 'src',
-    title: 'Card'
-  },
-  {
-    imgSrc: 'src',
-    title: 'Card'
-  },
-  {
-    imgSrc: 'src',
-    title: 'Card'
-  },
-  {
-    imgSrc: 'src',
-    title: 'Card'
-  },
-  {
-    imgSrc: 'src',
-    title: 'Card'
-  },
-  {
-    imgSrc: 'src',
-    title: 'Card'
-  },
+  Animals.BEAR,
+  Animals.BEE,
+  Animals.CHICKEN,
+  Animals.DOG,
+  Animals.ELEPHANT,
+  Animals.FLAMINGO,
+  Animals.BEAR,
+  Animals.BEE,
+  Animals.CHICKEN,
+  Animals.DOG,
+  Animals.ELEPHANT,
+  Animals.FLAMINGO,
+  // {
+  //   imgSrc: bee,
+  //   title: 'bee'
+  // },
+  // {
+  //   imgSrc: chicken,
+  //   title: 'chicken'
+  // },
+  // {
+  //   imgSrc: dog,
+  //   title: 'dog'
+  // },
+  // {
+  //   imgSrc: 'src',
+  //   title: 'Card'
+  // },
+  // {
+  //   imgSrc: 'src',
+  //   title: 'Card'
+  // },
+  // {
+  //   imgSrc: 'src',
+  //   title: 'Card'
+  // },
+  // {
+  //   imgSrc: 'src',
+  //   title: 'Card'
+  // },
+  // {
+  //   imgSrc: 'src',
+  //   title: 'Card'
+  // },
+  // {
+  //   imgSrc: 'src',
+  //   title: 'Card'
+  // },
+  // {
+  //   imgSrc: 'src',
+  //   title: 'Card'
+  // },
+  // {
+  //   imgSrc: 'src',
+  //   title: 'Card'
+  // },
   // {
   //   imgSrc: 'src',
   //   title: 'Card'

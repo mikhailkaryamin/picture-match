@@ -1,17 +1,8 @@
-type Action = {
-  type: string;
-}
+import { combineReducers } from 'redux';
 
-const initialState = {};
+import NameSpace from './nameSpace';
+import { reducer as timer } from './timer';
 
-const reducer = (state = initialState, action: Action) => {
-  switch (action.type) {
-
-  }
-
-  return state;
-}
-
-export {
-  reducer,
-}
+export default combineReducers({
+  [NameSpace.TIMER]: timer,
+})

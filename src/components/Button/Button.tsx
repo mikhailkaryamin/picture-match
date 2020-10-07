@@ -1,20 +1,23 @@
 import React from 'react';
 
 type Props = {
-  img?: string;
+  children?: React.ReactNode;
   onClick: () => void;
   title: string;
   prefix: string;
 }
 
-const Button: React.FC<Props>  = ({ img, onClick, prefix, title }: Props) => {
+const Button: React.FC<Props>  = ({children, onClick, prefix, title }: Props) => {
   return (
     <button
       className={`button button--${prefix}`}
       onClick={onClick}
     >
       <span className={`button__title button__title--${prefix}`}>
-        {title}
+        {children === undefined && (
+          title
+        )}
+        {children}
       </span>
     </button>
   )

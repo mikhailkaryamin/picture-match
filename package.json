@@ -43,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "@svgr/webpack": "^5.4.0",
     "redux-devtools-extension": "2.13.8",
     "stylelint": "13.7.2",
     "stylelint-order": "4.1.0",

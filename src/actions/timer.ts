@@ -2,11 +2,13 @@ const ActionType = {
   START_TIMER: 'START_TIMER',
   STOP_TIMER: 'STOP_TIMER',
   RESET_TIMER: 'RESET_TIMER',
+  TICK: 'TICK',
 }
 
 const ActionCreator = {
-  startTimer: () => ({
+  startTimer: (time: number) => ({
     type: ActionType.START_TIMER,
+    offset: time,
   }),
 
   stopTimer: () => ({
@@ -15,6 +17,11 @@ const ActionCreator = {
 
   resetTimer: () => ({
     type: ActionType.RESET_TIMER,
+  }),
+
+  tick: (time: number) => ({
+    type: ActionType.TICK,
+    time: time,
   })
 }
 

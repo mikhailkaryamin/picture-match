@@ -2,20 +2,29 @@ import { ActionType } from '../actions/timer';
 
 type Action = {
   type: string;
+  offset: number;
+  time: number;
 };
+
+type State = {
+  isOn: boolean | null;
+  time: number;
+  offset: number;
+}
 
 const initialState = {
-  isOn: false,
+  isOn: null,
   time: 0,
+  offset: 0,
 };
 
-const reducer = (state = initialState, action: Action) => {
+const reducer = (state: State = initialState, action: Action) => {
   switch (action.type) {
     case ActionType.START_TIMER:
       return {
         ...initialState,
         isOn: true,
-        offset: Date.now(),
+        offset: action.offset,
       };
 
     case ActionType.STOP_TIMER:
@@ -28,7 +37,14 @@ const reducer = (state = initialState, action: Action) => {
       return {
         isOn: false,
         time: 0,
-        offset: null,
+        offset: 0,
+      };
+
+    case ActionType.TICK:
+      return {
+        ...state,
+        time: state.time + (action.time - state.offset),
+        offset: action.time,
       };
 
     default:

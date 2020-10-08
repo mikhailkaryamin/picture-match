@@ -36,7 +36,9 @@ const mapStateToProps = (state: State) => ({
 
 const mapDispatchToProps = (dispatch: Function) => ({
   start: () => {
-    dispatch(ActionTimer.startTimer())
+    dispatch(ActionTimer.startTimer(
+      Date.now()
+    ))
   },
   stop: () => {
     dispatch(ActionTimer.stopTimer())

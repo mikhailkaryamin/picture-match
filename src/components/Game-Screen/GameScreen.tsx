@@ -3,7 +3,7 @@ import React from 'react';
 import Container from '../Container/Container';
 import Frame from '../Frame/Frame';
 import GameSettings from '../Game-Settings/Game-Settings';
-import Timer from '../Timer/Timer';
+import TimerContainer from '../../containers/TimerContainer/TimerContainer';
 import Animals from '../../assets/animals/index';
 
 const MOCK_CARDS = [
@@ -35,10 +35,7 @@ const GameScreen = () => {
           />
         </div>
         <div className="game-screen__timer">
-          <Timer
-            currentTime={`00.10`}
-            bestTime={`01.00`}
-          />
+          <TimerContainer />
         </div>
       </div>
     </Container>

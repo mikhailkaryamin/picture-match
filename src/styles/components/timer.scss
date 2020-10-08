@@ -1,4 +1,4 @@
-.score-board {
+.timer {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -11,13 +11,13 @@
   background: linear-gradient(0deg, rgba(195,93,34,1) 0%, rgba(253,160,45,1) 100%);
 }
 
-.score-board__wrapper {
+.timer__wrapper {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
 }
 
-.score-board__time {
+.timer__time {
   font-size: 2.5rem;
 
   &--current {

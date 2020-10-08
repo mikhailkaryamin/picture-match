@@ -7,12 +7,12 @@ type Props = {
 
 const ScoreBoard = ({currentTime, bestTime}: Props) => {
   return (
-    <div className="score-board">
-      <div className="score-board__wrapper">
-        <span className="score-board__time score-board__time--current">
+    <div className="timer">
+      <div className="timer__wrapper">
+        <span className="timer__time timer__time--current">
           {currentTime}
         </span>
-        <span className="score-board__time score-board__time--best">
+        <span className="timer__time timer__time--best">
           {bestTime}
         </span>
       </div>

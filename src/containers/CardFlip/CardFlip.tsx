@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+
+import { Timer } from '../../shared/types';
 
 type Props = {
   children: React.ReactNode[];
+  isPlay: boolean;
+}
+
+type State = {
+  TIMER: Timer
 }
 
 const SideCard ={
@@ -9,7 +17,7 @@ const SideCard ={
   BACK: 1,
 }
 
-const CardFlip: React.FC<Props> = ({ children }: Props) => {
+const CardFlip: React.FC<Props> = ({ children, isPlay }: Props) => {
   const [isFlipped, setFlipped] = useState(true);
 
   const frontRotateY = `rotateY(${
@@ -21,7 +29,7 @@ const CardFlip: React.FC<Props> = ({ children }: Props) => {
 
   return (
     <div className="card-flip"
-      onClick={() => setFlipped(!isFlipped)}
+      onClick={isPlay ? () => setFlipped(!isFlipped) : () => {}}
     >
       <div
         className="card-flip__front"
@@ -45,4 +53,8 @@ const CardFlip: React.FC<Props> = ({ children }: Props) => {
   )
 }
 
-export default CardFlip;
+const mapStateToProps = (state: State) => ({
+  isPlay: state['TIMER'].isActive,
+})
+
+export default connect(mapStateToProps)(CardFlip);

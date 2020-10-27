@@ -2,6 +2,7 @@ import React from 'react';
 
 import Button from '../Button/Button';
 import PlayButton from '../../containers/PlayButton/PlayButton';
+import ResetButton from '../../containers/ResetButton/ResetButton';
 
 import { ReactComponent as Music } from '../../assets/icons/music.svg';
 import { ReactComponent as Sound } from '../../assets/icons/sound.svg';
@@ -11,6 +12,9 @@ const GameSettings = () => {
     <ul className="game-settings">
       <li className="game-settings__item">
         <PlayButton />
+      </li>
+      <li className="game-settings__item">
+        <ResetButton/>
       </li>
       <li className="game-settings__item">
         <Button

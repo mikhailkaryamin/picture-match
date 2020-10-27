@@ -1,28 +1,23 @@
 const ActionType = {
-  START_TIMER: 'START_TIMER',
-  STOP_TIMER: 'STOP_TIMER',
+  SET_ACTIVE_TIMER: 'SET_ACTIVE_TIMER',
+  SET_TIMER: 'SET_TIMER',
   RESET_TIMER: 'RESET_TIMER',
-  TICK: 'TICK',
 }
 
 const ActionCreator = {
-  startTimer: (time: number) => ({
-    type: ActionType.START_TIMER,
-    offset: time,
+  setActive: (isActive: boolean) => ({
+    type: ActionType.SET_ACTIVE_TIMER,
+    payload: isActive,
   }),
 
-  stopTimer: () => ({
-    type: ActionType.STOP_TIMER,
+  setTime: (time: number) => ({
+    type: ActionType.SET_TIMER,
+    payload: time,
   }),
 
   resetTimer: () => ({
     type: ActionType.RESET_TIMER,
   }),
-
-  tick: (time: number) => ({
-    type: ActionType.TICK,
-    time: time,
-  })
 }
 
 export {

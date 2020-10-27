@@ -1,23 +1,25 @@
-import React, { useEffect } from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
+import { useInterval } from 'react-use';
 
 import Timer from '../../components/Timer/Timer';
 import { ActionCreator as ActionTimer } from '../../actions/timer';
 
+import { Timer as TimerTypes } from '../../shared/types';
+
 type State = {
-  TIMER: {
-    time: Date;
-    isOn: boolean;
-  }
+  TIMER: TimerTypes
 }
 
 type Props = {
-  isOn: boolean;
-  time: Date;
-  tick: (time: number) => void;
+  isActive: boolean;
+  setTime: (time: number) => void;
+  time: number;
 }
 
-const format = (time: Date) => {
+const ONE_SEC = 1000;
+
+const format = (seconds: number) => {
   const pad = (time: string, length: number) => {
     while (time.length < length) {
       time = '0' + time;
@@ -26,31 +28,21 @@ const format = (time: Date) => {
     return time;
   }
 
-  time = new Date(time);
+  const time = new Date(seconds * ONE_SEC);
 
   let m = pad(time.getMinutes().toString(), 2);
   let s = pad(time.getSeconds().toString(), 2);
+
   return `${m} : ${s}`;
 }
 
-const TimerContainer = ({ isOn, time, tick }: Props) => {
-
-  useEffect(() => {
-    let interval = null;
-
-    if (isOn && interval === null) {
-
-      interval = setInterval(() => {
-        tick(Date.now());
-      }, 1000);
-    }
-
-    if (!isOn && interval !== null) {
-
-      clearInterval(interval);
-      interval = null;
-    }
-  })
+const TimerContainer = ({isActive, setTime, time}: Props) => {
+  useInterval(
+    () => {
+      setTime(time + 1);
+    },
+    isActive ? ONE_SEC : null
+  );
 
   return (
     <Timer
@@ -60,14 +52,15 @@ const TimerContainer = ({ isOn, time, tick }: Props) => {
   )
 };
 
+
 const mapStateToProps = (state: State) => ({
-  isOn: state['TIMER'].isOn,
+  isActive: state['TIMER'].isActive,
   time: state['TIMER'].time,
 });
 
 const mapDispatchToProps = (dispatch: Function) => ({
-  tick: (time: number) => {
-    dispatch(ActionTimer.tick(time))
+  setTime: (time: number) => {
+    dispatch(ActionTimer.setTime(time))
   }
 })
 

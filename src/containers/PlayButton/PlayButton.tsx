@@ -6,6 +6,8 @@ import { ReactComponent as Play } from '../../assets/icons/play.svg';
 import { ReactComponent as Pause } from '../../assets/icons/pause.svg';
 import { ActionCreator as ActionTimer } from '../../actions/timer';
 
+import { Timer } from '../../shared/types';
+
 type Props = {
   isPlay: boolean;
   start: () => void;
@@ -13,9 +15,7 @@ type Props = {
 }
 
 type State = {
-  TIMER: {
-    isOn: boolean;
-  }
+  TIMER: Timer
 }
 
 const PlayButton = ({ isPlay, start, stop }: Props) => {
@@ -31,17 +31,19 @@ const PlayButton = ({ isPlay, start, stop }: Props) => {
 }
 
 const mapStateToProps = (state: State) => ({
-  isPlay: state['TIMER'].isOn,
+  isPlay: state['TIMER'].isActive,
 })
 
 const mapDispatchToProps = (dispatch: Function) => ({
   start: () => {
-    dispatch(ActionTimer.startTimer(
-      Date.now()
+    dispatch(ActionTimer.setActive(
+      true
     ))
   },
   stop: () => {
-    dispatch(ActionTimer.stopTimer())
+    dispatch(ActionTimer.setActive(
+      false
+    ))
   }
 })
 

@@ -1,4 +1,5 @@
 const NameSpace = {
+  CARDS: 'CARDS',
   TIMER: 'TIMER',
 }
 

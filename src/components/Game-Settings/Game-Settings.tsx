@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Button from '../Button/Button';
+import ButtonFrameSize from '../../containers/ButtonFrameSize/ButtonFrameSize';
 import PlayButton from '../../containers/PlayButton/PlayButton';
 import ResetButton from '../../containers/ResetButton/ResetButton';
 
@@ -35,38 +36,28 @@ const GameSettings = () => {
         </Button>
       </li>
       <li className="game-settings__item">
-        <Button
-          onClick={() => {}}
-          title={'2x2'}
-          prefix={'size-frame'}
+        <ButtonFrameSize
+          sizeFrame={'size2x2'}
         />
       </li>
       <li className="game-settings__item">
-        <Button
-          onClick={() => {}}
-          title={'2x3'}
-          prefix={'size-frame'}
+        <ButtonFrameSize
+          sizeFrame={'size2x3'}
         />
       </li>
       <li className="game-settings__item">
-        <Button
-          onClick={() => {}}
-          title={'3x4'}
-          prefix={'size-frame'}
+        <ButtonFrameSize
+          sizeFrame={'size3x4'}
         />
       </li>
       <li className="game-settings__item">
-        <Button
-          onClick={() => {}}
-          title={'4x5'}
-          prefix={'size-frame'}
+        <ButtonFrameSize
+          sizeFrame={'size4x5'}
         />
       </li>
       <li className="game-settings__item">
-        <Button
-          onClick={() => {}}
-          title={'5x6'}
-          prefix={'size-frame'}
+        <ButtonFrameSize
+          sizeFrame={'size5x6'}
         />
       </li>
     </ul>

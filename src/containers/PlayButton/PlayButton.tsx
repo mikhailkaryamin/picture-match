@@ -4,18 +4,15 @@ import { connect } from 'react-redux'
 import Button from '../../components/Button/Button';
 import { ReactComponent as Play } from '../../assets/icons/play.svg';
 import { ReactComponent as Pause } from '../../assets/icons/pause.svg';
+
 import { ActionCreator as ActionTimer } from '../../actions/timer';
 
-import { Timer } from '../../shared/types';
+import { State as StateType } from '../../shared/types';
 
 type Props = {
   isPlay: boolean;
   start: () => void;
   stop: () => void;
-}
-
-type State = {
-  TIMER: Timer
 }
 
 const PlayButton = ({ isPlay, start, stop }: Props) => {
@@ -30,7 +27,7 @@ const PlayButton = ({ isPlay, start, stop }: Props) => {
   )
 }
 
-const mapStateToProps = (state: State) => ({
+const mapStateToProps = (state: StateType) => ({
   isPlay: state['TIMER'].isActive,
 })
 

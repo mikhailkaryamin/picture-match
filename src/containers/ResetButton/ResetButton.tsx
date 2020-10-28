@@ -5,11 +5,7 @@ import Button from '../../components/Button/Button';
 import { ReactComponent as ResetIcon } from '../../assets/icons/restart.svg';
 import { ActionCreator as ActionTimer } from '../../actions/timer';
 
-import { Timer } from '../../shared/types';
-
-type State = {
-  TIMER: Timer
-}
+import { State as StateType } from '../../shared/types';
 
 type Props = {
   isActive: boolean;
@@ -30,7 +26,7 @@ const ResetButton = ({ time, reset }: Props) => {
   )
 }
 
-const mapStateToProps = (state: State) => ({
+const mapStateToProps = (state: StateType) => ({
   isActive: state['TIMER'].isActive,
   time: state['TIMER'].time,
 })

@@ -5,11 +5,7 @@ import { useInterval } from 'react-use';
 import Timer from '../../components/Timer/Timer';
 import { ActionCreator as ActionTimer } from '../../actions/timer';
 
-import { Timer as TimerTypes } from '../../shared/types';
-
-type State = {
-  TIMER: TimerTypes
-}
+import { State as StateType } from '../../shared/types';
 
 type Props = {
   isActive: boolean;
@@ -53,7 +49,7 @@ const TimerContainer = ({isActive, setTime, time}: Props) => {
 };
 
 
-const mapStateToProps = (state: State) => ({
+const mapStateToProps = (state: StateType) => ({
   isActive: state['TIMER'].isActive,
   time: state['TIMER'].time,
 });

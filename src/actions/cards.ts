@@ -1,42 +1,41 @@
-import { Card as CardType } from '../shared/types';
+import {
+  ActionFirstOpenCard,
+  ActionFrameSize,
+  ActionSetNumberOfCard,
+  ActionSecondOpenCard,
+  Card as CardType,
+} from '../shared/types';
 
 const ActionType = {
   SET_FIRST_OPEN_CARD: 'SET_FIRST_OPEN_CARD',
-  SET_INVISIBLE_CARD: 'SET_INVISIBLE_CARD',
   SET_FRAME_SIZE: 'SET_FRAME_SIZE',
   SET_NUMBER_OF_CARD: 'SET_NUMBER_OF_CARD',
   SET_SECOND_OPEN_CARD: 'SET_SECOND_OPEN_CARD',
-}
+} as const;
 
 const ActionCreator = {
-  setFirstOpenCard: (card: CardType) => ({
+  setFirstOpenCard: (card: CardType): ActionFirstOpenCard => ({
     type: ActionType.SET_FIRST_OPEN_CARD,
-    payload: card,
+    firstOpenCard: card,
   }),
 
-  setFrameSize: (size: number[]) => ({
+  setFrameSize: (size: number[]): ActionFrameSize => ({
     type: ActionType.SET_FRAME_SIZE,
-    payload: size,
+    sizeFrame: size,
   }),
 
-  setInvisibleCard: (card: CardType) => ({
-    type: ActionType.SET_INVISIBLE_CARD,
-    payload: card,
-  }),
-
-  setNumberOfCards: (number: number) => ({
+  setNumberOfCards: (number: number): ActionSetNumberOfCard => ({
     type: ActionType.SET_NUMBER_OF_CARD,
-    payload: number,
+    numberOfCards: number,
   }),
 
-  setSecondOpenCard: (card: CardType) => ({
+  setSecondOpenCard: (card: CardType): ActionSecondOpenCard => ({
     type: ActionType.SET_SECOND_OPEN_CARD,
-    payload: card,
+    secondOpenCard: card,
   }),
-
-}
+};
 
 export {
   ActionCreator,
   ActionType,
-}
+};

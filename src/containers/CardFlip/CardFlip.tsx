@@ -1,23 +1,30 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
-import { Timer } from '../../shared/types';
+import Card from '../../components/Card/Card';
+import Animals from '../../assets/animals/index';
+
+import { ActionCreator as ActionCards } from '../../actions/cards';
+
+import {
+  ActionFirstOpenCard,
+  ActionSecondOpenCard,
+  Card as CardType,
+  State as StateType,
+} from '../../shared/types';
+
+type Dispatch = (arg: ActionFirstOpenCard | ActionSecondOpenCard) => void;
 
 type Props = {
-  children: React.ReactNode[];
+  firstOpenCard: CardType | null;
+  card: CardType;
   isPlay: boolean;
+  setFirstOpenCard: (card: CardType) => void;
+  setSecondOpenCard: (card: CardType) => void;
 }
 
-type State = {
-  TIMER: Timer
-}
+const CardFlip: React.FC<Props> = ({ firstOpenCard, card, isPlay, setFirstOpenCard, setSecondOpenCard }: Props) => {
 
-const SideCard ={
-  FRONT: 0,
-  BACK: 1,
-}
-
-const CardFlip: React.FC<Props> = ({ children, isPlay }: Props) => {
   const [isFlipped, setFlipped] = useState(true);
 
   const frontRotateY = `rotateY(${
@@ -27,18 +34,24 @@ const CardFlip: React.FC<Props> = ({ children, isPlay }: Props) => {
     isFlipped ? 0 : -180
   }deg)`;
 
+  const displayType = card.isVisible ? `block` : `none`;
+
   return (
     <div className="card-flip"
-      onClick={isPlay ? () => setFlipped(!isFlipped) : () => {}}
+      style={{ display: displayType }}
+      onClick={isPlay ? () => setFlipped(!isFlipped) : Boolean}
     >
       <div
         className="card-flip__front"
-        style={{ 
+        style={{
           position: isFlipped ? 'relative' : 'absolute',
           transform: frontRotateY,
         }}
       >
-        {children[SideCard.FRONT]}
+        <Card
+          img={card.srcImg}
+          title={card.title}
+        />
       </div>
       <div
         className="card-flip__back"
@@ -47,14 +60,34 @@ const CardFlip: React.FC<Props> = ({ children, isPlay }: Props) => {
           transform: backRotateY,
         }}
       >
-        {children[SideCard.BACK]}
+        <Card
+          img={Animals.BACK.srcImg}
+          title={Animals.BACK.title}
+        />
       </div>
     </div>
-  )
-}
+  );
+};
 
-const mapStateToProps = (state: State) => ({
+const mapStateToProps = (state: StateType) => ({
+  firstOpenCard: state['CARDS'].firstOpenCard,
   isPlay: state['TIMER'].isActive,
-})
+});
 
-export default connect(mapStateToProps)(CardFlip);
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  setFirstOpenCard: (card: CardType) => {
+    dispatch(ActionCards.setFirstOpenCard(
+        card
+    ));
+  },
+  setSecondOpenCard: (card: CardType) => {
+    dispatch(ActionCards.setSecondOpenCard(
+        card
+    ));
+  },
+});
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(CardFlip);

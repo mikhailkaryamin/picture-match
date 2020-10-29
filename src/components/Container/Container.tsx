@@ -9,7 +9,7 @@ const Container: React.FC<Props> = ({ children }: Props) => {
     <div className="game-container">
       {children}
     </div>
-  )
-}
+  );
+};
 
 export default Container;

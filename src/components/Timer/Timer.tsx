@@ -5,7 +5,7 @@ type Props = {
   bestTime: string;
 }
 
-const ScoreBoard = ({currentTime, bestTime}: Props) => {
+const ScoreBoard: React.FC<Props> = ({ currentTime, bestTime }: Props) => {
   return (
     <div className="timer">
       <div className="timer__wrapper">
@@ -17,7 +17,7 @@ const ScoreBoard = ({currentTime, bestTime}: Props) => {
         </span>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default ScoreBoard;

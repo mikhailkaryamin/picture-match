@@ -8,7 +8,7 @@ type Props = {
   prefix: string;
 }
 
-const Button: React.FC<Props>  = ({children, isDisabled, onClick, prefix, title }: Props) => {
+const Button: React.FC<Props> = ({ children, isDisabled, onClick, prefix, title }: Props) => {
   return (
     <button
       className={`button button--${prefix}`}
@@ -22,7 +22,7 @@ const Button: React.FC<Props>  = ({children, isDisabled, onClick, prefix, title 
         {children}
       </span>
     </button>
-  )
-}
+  );
+};
 
 export default Button;

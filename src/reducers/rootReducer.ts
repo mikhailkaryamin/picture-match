@@ -7,4 +7,4 @@ import { reducer as timer } from './timer';
 export default combineReducers({
   [NameSpace.CARDS]: cards,
   [NameSpace.TIMER]: timer,
-})
+});

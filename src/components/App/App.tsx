@@ -5,14 +5,14 @@ import {
   Route,
 } from 'react-router-dom';
 
-import { AppRoute } from '../../shared/routes'
+import { AppRoute } from '../../shared/routes';
 
 import MainScreen from '../Main-Screen/MainScreen';
 import GameScreen from '../Game-Screen/GameScreen';
 import HighScoreScreen from '../High-Score-Screen/HighScoreScreen';
 
-function App () {
-  return(
+const App: React.FC = () => {
+  return (
     <Router>
       <Switch>
         <Route exact path={AppRoute.MAIN}>
@@ -26,7 +26,7 @@ function App () {
         </Route>
       </Switch>
     </Router>
-  )
-}
+  );
+};
 
 export default App;

@@ -1,26 +1,32 @@
+import {
+  Action as ActionWithoutPayload,
+  ActionSetActiveTimer,
+  ActionSetTimer,
+} from '../shared/types';
+
 const ActionType = {
   SET_ACTIVE_TIMER: 'SET_ACTIVE_TIMER',
   SET_TIMER: 'SET_TIMER',
   RESET_TIMER: 'RESET_TIMER',
-}
+} as const;
 
 const ActionCreator = {
-  setActive: (isActive: boolean) => ({
+  setActive: (isActive: boolean): ActionSetActiveTimer => ({
     type: ActionType.SET_ACTIVE_TIMER,
-    payload: isActive,
+    isActive,
   }),
 
-  setTime: (time: number) => ({
+  setTime: (time: number): ActionSetTimer => ({
     type: ActionType.SET_TIMER,
-    payload: time,
+    time,
   }),
 
-  resetTimer: () => ({
+  resetTimer: (): ActionWithoutPayload => ({
     type: ActionType.RESET_TIMER,
   }),
-}
+};
 
 export {
   ActionCreator,
   ActionType,
-}
+};

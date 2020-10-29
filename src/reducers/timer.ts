@@ -1,32 +1,31 @@
 import { ActionType } from '../actions/timer';
 
-type Action = {
-  type: string;
-  payload: number | boolean | undefined;
-};
+import {
+  ActionSetActiveTimer,
+  ActionSetTimer,
+  ActionResetTimer,
+  Timer as TimerType
+} from '../shared/types';
 
-type State = {
-  isActive: boolean | null;
-  time: number;
-}
+type ActionType = ActionSetActiveTimer | ActionSetTimer | ActionResetTimer;
 
 const initialState = {
   isActive: false,
   time: 0,
 };
 
-const reducer = (state: State = initialState, action: Action) => {
+const reducer = (state: TimerType = initialState, action: ActionType): TimerType => {
   switch (action.type) {
     case ActionType.SET_ACTIVE_TIMER:
       return {
         ...state,
-        isActive: action.payload,
-      }
+        isActive: action.isActive,
+      };
 
     case ActionType.SET_TIMER:
       return {
         ...state,
-        time: action.payload,
+        time: action.time,
       };
 
     case ActionType.RESET_TIMER:
@@ -38,8 +37,8 @@ const reducer = (state: State = initialState, action: Action) => {
     default:
       return state;
   }
-}
+};
 
 export {
   reducer,
-}
+};

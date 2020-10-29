@@ -5,7 +5,12 @@ import Button from '../../components/Button/Button';
 import { ReactComponent as ResetIcon } from '../../assets/icons/restart.svg';
 import { ActionCreator as ActionTimer } from '../../actions/timer';
 
-import { State as StateType } from '../../shared/types';
+import {
+  Action,
+  State as StateType
+} from '../../shared/types';
+
+type Dispatch = (arg: Action) => void;
 
 type Props = {
   isActive: boolean;
@@ -13,31 +18,33 @@ type Props = {
   time: number;
 }
 
-const ResetButton = ({ time, reset }: Props) => {
-  return(
+const ResetButton: React.FC<Props> = ({ time, reset }: Props) => {
+  const isDisabled = time === 0;
+
+  return (
     <Button
       onClick={reset}
       title={'reset'}
       prefix={'icon'}
-      isDisabled={!!!time}
+      isDisabled={isDisabled}
     >
       <ResetIcon />
     </Button>
-  )
-}
+  );
+};
 
 const mapStateToProps = (state: StateType) => ({
   isActive: state['TIMER'].isActive,
   time: state['TIMER'].time,
-})
+});
 
-const mapDispatchToProps = (dispatch: Function) => ({
+const mapDispatchToProps = (dispatch: Dispatch) => ({
   reset: () => {
-    dispatch(ActionTimer.resetTimer())
+    dispatch(ActionTimer.resetTimer());
   }
-})
+});
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
+    mapStateToProps,
+    mapDispatchToProps,
 )(ResetButton);

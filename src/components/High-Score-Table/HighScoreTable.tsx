@@ -1,6 +1,6 @@
 import React from 'react';
 
-const HighScoreTable = () => {
+const HighScoreTable: React.FC = () => {
   return (
     <div className="high-score-table">
       <h1 className="high-score-table__title">
@@ -18,7 +18,7 @@ const HighScoreTable = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default HighScoreTable;

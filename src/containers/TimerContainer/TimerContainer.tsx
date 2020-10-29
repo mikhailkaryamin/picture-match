@@ -5,7 +5,12 @@ import { useInterval } from 'react-use';
 import Timer from '../../components/Timer/Timer';
 import { ActionCreator as ActionTimer } from '../../actions/timer';
 
-import { State as StateType } from '../../shared/types';
+import {
+  ActionSetTimer,
+  State as StateType
+} from '../../shared/types';
+
+type Dispatch = (arg: ActionSetTimer) => void;
 
 type Props = {
   isActive: boolean;
@@ -22,22 +27,22 @@ const format = (seconds: number) => {
     }
 
     return time;
-  }
+  };
 
   const time = new Date(seconds * ONE_SEC);
 
-  let m = pad(time.getMinutes().toString(), 2);
-  let s = pad(time.getSeconds().toString(), 2);
+  const m = pad(time.getMinutes().toString(), 2);
+  const s = pad(time.getSeconds().toString(), 2);
 
   return `${m} : ${s}`;
-}
+};
 
-const TimerContainer = ({isActive, setTime, time}: Props) => {
+const TimerContainer: React.FC<Props> = ({ isActive, setTime, time }: Props) => {
   useInterval(
-    () => {
-      setTime(time + 1);
-    },
-    isActive ? ONE_SEC : null
+      () => {
+        setTime(time + 1);
+      },
+      isActive ? ONE_SEC : null
   );
 
   return (
@@ -45,7 +50,7 @@ const TimerContainer = ({isActive, setTime, time}: Props) => {
       currentTime={format(time)}
       bestTime="03.00"
     />
-  )
+  );
 };
 
 
@@ -54,13 +59,14 @@ const mapStateToProps = (state: StateType) => ({
   time: state['TIMER'].time,
 });
 
-const mapDispatchToProps = (dispatch: Function) => ({
+
+const mapDispatchToProps = (dispatch: Dispatch) => ({
   setTime: (time: number) => {
-    dispatch(ActionTimer.setTime(time))
+    dispatch(ActionTimer.setTime(time));
   }
-})
+});
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-  )(TimerContainer);
+    mapStateToProps,
+    mapDispatchToProps
+)(TimerContainer);

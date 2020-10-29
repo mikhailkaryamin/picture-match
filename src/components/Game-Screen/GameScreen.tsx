@@ -6,7 +6,7 @@ import GameSettings from '../Game-Settings/Game-Settings';
 import TimerContainer from '../../containers/TimerContainer/TimerContainer';
 
 
-const GameScreen = () => {
+const GameScreen: React.FC = () => {
   return (
     <Container>
       <div className="game-screen">
@@ -21,7 +21,7 @@ const GameScreen = () => {
         </div>
       </div>
     </Container>
-  )
-}
+  );
+};
 
 export default GameScreen;

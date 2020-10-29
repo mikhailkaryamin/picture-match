@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { AppRoute } from '../../shared/routes';
 
-const Menu = () => {
+const Menu: React.FC = () => {
   return (
     <div className="menu">
       <ul className="menu__list">
@@ -28,7 +28,7 @@ const Menu = () => {
         </li>
       </ul>
     </div>
-  )
-}
+  );
+};
 
 export default Menu;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
 import Button from '../../components/Button/Button';
 import { ReactComponent as Play } from '../../assets/icons/play.svg';
@@ -7,7 +7,12 @@ import { ReactComponent as Pause } from '../../assets/icons/pause.svg';
 
 import { ActionCreator as ActionTimer } from '../../actions/timer';
 
-import { State as StateType } from '../../shared/types';
+import {
+  ActionSetActiveTimer,
+  State as StateType
+} from '../../shared/types';
+
+type Dispatch = (arg: ActionSetActiveTimer) => void;
 
 type Props = {
   isPlay: boolean;
@@ -15,7 +20,7 @@ type Props = {
   stop: () => void;
 }
 
-const PlayButton = ({ isPlay, start, stop }: Props) => {
+const PlayButton: React.FC<Props> = ({ isPlay, start, stop }: Props) => {
   return (
     <Button
       onClick={isPlay ? stop : start}
@@ -24,27 +29,27 @@ const PlayButton = ({ isPlay, start, stop }: Props) => {
     >
       {isPlay ? <Pause /> : <Play />}
     </Button>
-  )
-}
+  );
+};
 
 const mapStateToProps = (state: StateType) => ({
   isPlay: state['TIMER'].isActive,
-})
+});
 
-const mapDispatchToProps = (dispatch: Function) => ({
+const mapDispatchToProps = (dispatch: Dispatch) => ({
   start: () => {
     dispatch(ActionTimer.setActive(
-      true
-    ))
+        true
+    ));
   },
   stop: () => {
     dispatch(ActionTimer.setActive(
-      false
-    ))
+        false
+    ));
   }
-})
+});
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
+    mapStateToProps,
+    mapDispatchToProps,
 )(PlayButton);

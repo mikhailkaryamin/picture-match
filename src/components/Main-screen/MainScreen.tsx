@@ -3,7 +3,7 @@ import React from 'react';
 import Container from '../Container/Container';
 import Menu from '../Menu/Menu';
 
-const MainScreen = () => {
+const MainScreen: React.FC = () => {
   return (
     <Container>
       <div className="main-screen">
@@ -12,7 +12,7 @@ const MainScreen = () => {
         </div>
       </div>
     </Container>
-  )
-}
+  );
+};
 
 export default MainScreen;

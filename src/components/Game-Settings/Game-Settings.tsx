@@ -8,7 +8,9 @@ import ResetButton from '../../containers/ResetButton/ResetButton';
 import { ReactComponent as Music } from '../../assets/icons/music.svg';
 import { ReactComponent as Sound } from '../../assets/icons/sound.svg';
 
-const GameSettings = () => {
+import { getEmptyFunc } from '../../shared/utils';
+
+const GameSettings: React.FC = () => {
   return (
     <ul className="game-settings">
       <li className="game-settings__item">
@@ -19,7 +21,7 @@ const GameSettings = () => {
       </li>
       <li className="game-settings__item">
         <Button
-          onClick={() => {}}
+          onClick={getEmptyFunc}
           title={'music'}
           prefix={'icon'}
         >
@@ -28,7 +30,7 @@ const GameSettings = () => {
       </li>
       <li className="game-settings__item">
         <Button
-          onClick={() => {}}
+          onClick={getEmptyFunc}
           title={'sound'}
           prefix={'icon'}
         >
@@ -61,7 +63,7 @@ const GameSettings = () => {
         />
       </li>
     </ul>
-  )
-}
+  );
+};
 
 export default GameSettings;

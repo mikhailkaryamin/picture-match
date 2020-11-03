@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 
 import Button from '../../components/Button/Button';
 import { ReactComponent as ResetIcon } from '../../assets/icons/restart.svg';
+
 import { ActionCreator as ActionTimer } from '../../actions/timer';
+import { ActionCreator as ActionCards } from '../../actions/cards';
 
 import {
   Action,
@@ -41,6 +43,7 @@ const mapStateToProps = (state: StateType) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   reset: () => {
     dispatch(ActionTimer.resetTimer());
+    dispatch(ActionCards.resetCards());
   }
 });
 

@@ -1,25 +1,28 @@
 import { ActionType } from '../actions/timer';
 
 import {
-  ActionSetActiveTimer,
-  ActionSetTimer,
-  ActionResetTimer,
+  ActionsTimer,
   Timer as TimerType
 } from '../shared/types';
 
-type ActionType = ActionSetActiveTimer | ActionSetTimer | ActionResetTimer;
-
 const initialState = {
+  bestTime: 0,
   isActive: false,
   time: 0,
 };
 
-const reducer = (state: TimerType = initialState, action: ActionType): TimerType => {
+const reducer = (state: TimerType = initialState, action: ActionsTimer): TimerType => {
   switch (action.type) {
     case ActionType.SET_ACTIVE_TIMER:
       return {
         ...state,
         isActive: action.isActive,
+      };
+
+    case ActionType.SET_BEST_TIME:
+      return {
+        ...state,
+        bestTime: action.time,
       };
 
     case ActionType.SET_TIMER:
@@ -30,6 +33,7 @@ const reducer = (state: TimerType = initialState, action: ActionType): TimerType
 
     case ActionType.RESET_TIMER:
       return {
+        ...state,
         isActive: false,
         time: 0,
       };

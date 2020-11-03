@@ -8,11 +8,11 @@ import { ReactComponent as Pause } from '../../assets/icons/pause.svg';
 import { ActionCreator as ActionTimer } from '../../actions/timer';
 
 import {
-  ActionSetActiveTimer,
+  ActionsTimer,
   State as StateType
 } from '../../shared/types';
 
-type Dispatch = (arg: ActionSetActiveTimer) => void;
+type Dispatch = (arg: ActionsTimer) => void;
 
 type Props = {
   isPlay: boolean;

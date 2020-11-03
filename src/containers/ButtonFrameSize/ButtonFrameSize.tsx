@@ -6,8 +6,7 @@ import Button from '../../components/Button/Button';
 import { ActionCreator as ActionCards } from '../../actions/cards';
 
 import {
-  ActionFrameSize,
-  ActionSetNumberOfCard
+  ActionsCards
 } from '../../shared/types';
 
 interface FrameSizeType {
@@ -18,7 +17,7 @@ interface FrameSizeType {
   size5x6: number[],
 }
 
-type Dispatch = (arg: ActionFrameSize | ActionSetNumberOfCard) => void;
+type Dispatch = (arg: ActionsCards) => void;
 
 type Props = {
   setSizeFrame: (size: number[]) => void;

@@ -6,13 +6,14 @@ import Timer from '../../components/Timer/Timer';
 import { ActionCreator as ActionTimer } from '../../actions/timer';
 
 import {
-  ActionSetTimer,
+  ActionsTimer,
   State as StateType
 } from '../../shared/types';
 
-type Dispatch = (arg: ActionSetTimer) => void;
+type Dispatch = (arg: ActionsTimer) => void;
 
 type Props = {
+  bestTime: number;
   isActive: boolean;
   setTime: (time: number) => void;
   time: number;
@@ -37,7 +38,7 @@ const format = (seconds: number) => {
   return `${m} : ${s}`;
 };
 
-const TimerContainer: React.FC<Props> = ({ isActive, setTime, time }: Props) => {
+const TimerContainer: React.FC<Props> = ({ bestTime, isActive, setTime, time }: Props) => {
   useInterval(
       () => {
         setTime(time + 1);
@@ -48,13 +49,14 @@ const TimerContainer: React.FC<Props> = ({ isActive, setTime, time }: Props) => 
   return (
     <Timer
       currentTime={format(time)}
-      bestTime="03.00"
+      bestTime={format(bestTime)}
     />
   );
 };
 
 
 const mapStateToProps = (state: StateType) => ({
+  bestTime: state['TIMER'].bestTime,
   isActive: state['TIMER'].isActive,
   time: state['TIMER'].time,
 });

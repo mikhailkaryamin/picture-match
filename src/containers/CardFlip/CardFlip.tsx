@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 import Card from '../../components/Card/Card';
@@ -7,31 +7,45 @@ import Animals from '../../assets/animals/index';
 import { ActionCreator as ActionCards } from '../../actions/cards';
 
 import {
-  ActionFirstOpenCard,
-  ActionSecondOpenCard,
+  ActionsCards,
   Card as CardType,
   State as StateType,
 } from '../../shared/types';
 
-type Dispatch = (arg: ActionFirstOpenCard | ActionSecondOpenCard) => void;
+type Dispatch = (arg: ActionsCards) => void;
 
 type Props = {
   firstOpenCard: CardType | null;
   card: CardType;
   isPlay: boolean;
+  secondOpenCard: CardType | null;
   setFirstOpenCard: (card: CardType) => void;
   setSecondOpenCard: (card: CardType) => void;
 }
 
-const CardFlip: React.FC<Props> = ({ firstOpenCard, card, isPlay, setFirstOpenCard, setSecondOpenCard }: Props) => {
+const CardFlip: React.FC<Props> = ({ firstOpenCard, card, isPlay, setFirstOpenCard, setSecondOpenCard, secondOpenCard }: Props) => {
+  const onClickCard = () => {
+    if (!isPlay || secondOpenCard) {
+      return false;
+    } else if (firstOpenCard) {
+      setSecondOpenCard(openCard);
+    } else {
+      setFirstOpenCard(openCard);
+    }
 
-  const [isFlipped, setFlipped] = useState(true);
+    return true;
+  };
+
+  const openCard: CardType = ({
+    ...card,
+    isFlip: true,
+  });
 
   const frontRotateY = `rotateY(${
-    isFlipped ? 180 : 0
+    card.isFlip ? 0 : -180
   }deg)`;
   const backRotateY = `rotateY(${
-    isFlipped ? 0 : -180
+    card.isFlip ? 180 : 0
   }deg)`;
 
   const displayType = card.isVisible ? `block` : `none`;
@@ -39,12 +53,12 @@ const CardFlip: React.FC<Props> = ({ firstOpenCard, card, isPlay, setFirstOpenCa
   return (
     <div className="card-flip"
       style={{ display: displayType }}
-      onClick={isPlay ? () => setFlipped(!isFlipped) : Boolean}
+      onClick={onClickCard}
     >
       <div
         className="card-flip__front"
         style={{
-          position: isFlipped ? 'relative' : 'absolute',
+          position: card.isFlip ? 'relative' : 'absolute',
           transform: frontRotateY,
         }}
       >
@@ -56,7 +70,7 @@ const CardFlip: React.FC<Props> = ({ firstOpenCard, card, isPlay, setFirstOpenCa
       <div
         className="card-flip__back"
         style={{
-          position: isFlipped ? 'absolute' : 'relative',
+          position: card.isFlip ? 'absolute' : 'relative',
           transform: backRotateY,
         }}
       >
@@ -70,7 +84,9 @@ const CardFlip: React.FC<Props> = ({ firstOpenCard, card, isPlay, setFirstOpenCa
 };
 
 const mapStateToProps = (state: StateType) => ({
+  cards: state[`CARDS`].cards,
   firstOpenCard: state['CARDS'].firstOpenCard,
+  secondOpenCard: state[`CARDS`].secondOpenCard,
   isPlay: state['TIMER'].isActive,
 });
 
@@ -79,11 +95,23 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
     dispatch(ActionCards.setFirstOpenCard(
         card
     ));
+    dispatch(ActionCards.setFlipCard(
+        card.id
+    ));
   },
   setSecondOpenCard: (card: CardType) => {
+    const check = () => {
+      dispatch(ActionCards.checkMatchCards());
+      dispatch(ActionCards.resetOpenCards());
+    };
+
     dispatch(ActionCards.setSecondOpenCard(
         card
     ));
+    dispatch(ActionCards.setFlipCard(
+        card.id
+    ));
+    setTimeout(check, 700);
   },
 });
 

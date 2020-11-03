@@ -1,0 +1,21 @@
+.end-game {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  font-size: 2rem;
+  border-radius: 10px;
+  background-color: #ff6347;
+}
+
+.end-game__row {
+  display: flex;
+  justify-content: space-between;
+
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+}
+
+.end-game__time {
+  margin-left: 1rem;
+}

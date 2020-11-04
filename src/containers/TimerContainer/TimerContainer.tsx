@@ -5,10 +5,12 @@ import { useInterval } from 'react-use';
 import Timer from '../../components/Timer/Timer';
 import { ActionCreator as ActionTimer } from '../../actions/timer';
 
+import { ONE_SEC } from '../../shared/consts';
 import {
   ActionsTimer,
   State as StateType
 } from '../../shared/types';
+import { formatTime } from '../../shared/utils';
 
 type Dispatch = (arg: ActionsTimer) => void;
 
@@ -18,25 +20,6 @@ type Props = {
   setTime: (time: number) => void;
   time: number;
 }
-
-const ONE_SEC = 1000;
-
-const format = (seconds: number) => {
-  const pad = (time: string, length: number) => {
-    while (time.length < length) {
-      time = '0' + time;
-    }
-
-    return time;
-  };
-
-  const time = new Date(seconds * ONE_SEC);
-
-  const m = pad(time.getMinutes().toString(), 2);
-  const s = pad(time.getSeconds().toString(), 2);
-
-  return `${m} : ${s}`;
-};
 
 const TimerContainer: React.FC<Props> = ({ bestTime, isActive, setTime, time }: Props) => {
   useInterval(
@@ -48,8 +31,8 @@ const TimerContainer: React.FC<Props> = ({ bestTime, isActive, setTime, time }: 
 
   return (
     <Timer
-      currentTime={format(time)}
-      bestTime={format(bestTime)}
+      currentTime={formatTime(time)}
+      bestTime={formatTime(bestTime)}
     />
   );
 };

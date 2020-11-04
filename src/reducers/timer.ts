@@ -22,7 +22,7 @@ const reducer = (state: TimerType = initialState, action: ActionsTimer): TimerTy
     case ActionType.SET_BEST_TIME:
       return {
         ...state,
-        bestTime: action.time,
+        bestTime: (action.time < state.bestTime || !state.bestTime) ? action.time : state.bestTime,
       };
 
     case ActionType.SET_TIMER:

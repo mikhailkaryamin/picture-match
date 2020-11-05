@@ -24,7 +24,7 @@ const PlayButton: React.FC<Props> = ({ isPlay, start, stop }: Props) => {
   return (
     <Button
       onClick={isPlay ? stop : start}
-      title={'game'}
+      title={'Play game'}
       prefix={'icon'}
     >
       {isPlay ? <Pause /> : <Play />}

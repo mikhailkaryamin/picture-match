@@ -26,7 +26,7 @@ const ResetButton: React.FC<Props> = ({ time, reset }: Props) => {
   return (
     <Button
       onClick={reset}
-      title={'reset'}
+      title={'Reset game'}
       prefix={'icon'}
       isDisabled={isDisabled}
     >

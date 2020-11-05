@@ -12,8 +12,9 @@ const Button: React.FC<Props> = ({ children, isDisabled, onClick, prefix, title 
   return (
     <button
       className={`button button--${prefix}`}
-      onClick={onClick}
       disabled={isDisabled ? true : false}
+      onClick={onClick}
+      title={title}
     >
       <span className={`button__title button__title--${prefix}`}>
         {children === undefined && (

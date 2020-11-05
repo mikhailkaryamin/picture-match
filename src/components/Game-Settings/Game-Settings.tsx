@@ -1,11 +1,11 @@
 import React from 'react';
 
 import Button from '../Button/Button';
-import ButtonFrameSize from '../../containers/ButtonFrameSize/ButtonFrameSize';
+import FrameSizeButton from '../../containers/FrameSizeButton/FrameSizeButton';
+import MusicButton from '../../containers/MusicButton/MusicButton';
 import PlayButton from '../../containers/PlayButton/PlayButton';
 import ResetButton from '../../containers/ResetButton/ResetButton';
 
-import { ReactComponent as Music } from '../../assets/icons/music.svg';
 import { ReactComponent as Sound } from '../../assets/icons/sound.svg';
 
 import { getEmptyFunc } from '../../shared/utils';
@@ -20,13 +20,7 @@ const GameSettings: React.FC = () => {
         <ResetButton/>
       </li>
       <li className="game-settings__item">
-        <Button
-          onClick={getEmptyFunc}
-          title={'music'}
-          prefix={'icon'}
-        >
-          <Music />
-        </Button>
+        <MusicButton />
       </li>
       <li className="game-settings__item">
         <Button
@@ -38,27 +32,27 @@ const GameSettings: React.FC = () => {
         </Button>
       </li>
       <li className="game-settings__item">
-        <ButtonFrameSize
+        <FrameSizeButton
           sizeFrame={'size2x2'}
         />
       </li>
       <li className="game-settings__item">
-        <ButtonFrameSize
+        <FrameSizeButton
           sizeFrame={'size2x3'}
         />
       </li>
       <li className="game-settings__item">
-        <ButtonFrameSize
+        <FrameSizeButton
           sizeFrame={'size3x4'}
         />
       </li>
       <li className="game-settings__item">
-        <ButtonFrameSize
+        <FrameSizeButton
           sizeFrame={'size4x5'}
         />
       </li>
       <li className="game-settings__item">
-        <ButtonFrameSize
+        <FrameSizeButton
           sizeFrame={'size5x6'}
         />
       </li>

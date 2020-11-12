@@ -1,13 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import Button from '../../components/Button/Button';
 
 import { ActionCreator as ActionCards } from '../../actions/cards';
-
-import {
-  ActionsCards
-} from '../../shared/types';
 
 interface FrameSizeType {
   size2x2: number[],
@@ -17,10 +13,7 @@ interface FrameSizeType {
   size5x6: number[],
 }
 
-type Dispatch = (arg: ActionsCards) => void;
-
 type Props = {
-  setSizeFrame: (size: number[]) => void;
   sizeFrame: keyof FrameSizeType;
 }
 
@@ -32,30 +25,23 @@ const FrameSize: FrameSizeType = {
   size5x6: [5, 6],
 };
 
-const ButtonFrameSize: React.FC<Props> = ({ setSizeFrame, sizeFrame }: Props) => {
+const ButtonFrameSize: React.FC<Props> = ({ sizeFrame }: Props) => {
+  const dispatch = useDispatch();
   const title = sizeFrame.slice(-3);
 
   return (
     <Button
-      onClick={() => setSizeFrame(FrameSize[sizeFrame])}
+      onClick={() => {
+        dispatch(ActionCards.setFrameSize(FrameSize[sizeFrame]));
+        dispatch(ActionCards.setNumberOfCards(
+            FrameSize[sizeFrame][0] * FrameSize[sizeFrame][1]
+        ));
+      }}
       prefix={'size-frame'}
       title={title}
     />
   );
 };
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  setSizeFrame: (size: number[]) => {
-    dispatch(ActionCards.setFrameSize(
-        size
-    ));
-    dispatch(ActionCards.setNumberOfCards(
-        size[0] * size[1]
-    ));
-  }
-});
 
-export default connect(
-    null,
-    mapDispatchToProps
-)(ButtonFrameSize);
+export default ButtonFrameSize;

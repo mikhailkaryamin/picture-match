@@ -1,5 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import {
+  useDispatch,
+  shallowEqual,
+  useSelector,
+} from 'react-redux';
 
 import CardFlip from '../CardFlip/CardFlip';
 import EndGame from '../../components/End-Game/End-Game';
@@ -7,30 +11,22 @@ import EndGame from '../../components/End-Game/End-Game';
 import { ActionCreator as ActionTimer } from '../../actions/timer';
 
 import {
-  ActionsTimer,
-  Card as CardType,
   State as StateType,
 } from '../../shared/types';
 import { formatTime } from '../../shared/utils';
 
-type Dispatch = (arg: ActionsTimer) => void;
-
-type Props = {
-  bestTime: number;
-  cards: CardType[];
-  setActiveTimer: (arg: boolean) => void;
-  setBestTime: (arg: number) => void;
-  sizeFrame: number[];
-  time: number;
-}
-
-const Frame: React.FC<Props> = ({ bestTime, cards, setActiveTimer, setBestTime, sizeFrame, time }: Props) => {
+const Frame: React.FC = () => {
+  const dispatch = useDispatch();
+  const bestTime = useSelector((state: StateType) => state['TIMER'].bestTime);
+  const cards = useSelector((state: StateType) => state['CARDS'].cards, shallowEqual);
+  const sizeFrame = useSelector((state: StateType) => state['CARDS'].sizeFrame, shallowEqual);
+  const time = useSelector((state: StateType) => state['TIMER'].time);
 
   const isEndGame = cards.every((card) => !card.isVisible);
 
   if (isEndGame) {
-    setBestTime(time);
-    setActiveTimer(false);
+    dispatch(ActionTimer.setBestTime(time));
+    dispatch(ActionTimer.setActive(false));
   }
 
   return (
@@ -64,23 +60,4 @@ const Frame: React.FC<Props> = ({ bestTime, cards, setActiveTimer, setBestTime, 
   );
 };
 
-const mapStateToProps = (state: StateType) => ({
-  bestTime: state['TIMER'].bestTime,
-  cards: state['CARDS'].cards,
-  sizeFrame: state['CARDS'].sizeFrame,
-  time: state['TIMER'].time,
-});
-
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  setBestTime: (time: number) => {
-    dispatch(ActionTimer.setBestTime(time));
-  },
-  setActiveTimer: (isActive: boolean) => {
-    dispatch(ActionTimer.setActive(isActive));
-  }
-});
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps,
-)(Frame);
+export default Frame;

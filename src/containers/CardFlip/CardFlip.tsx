@@ -1,5 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import {
+  useDispatch,
+  shallowEqual,
+  useSelector,
+} from 'react-redux';
 
 import Card from '../../components/Card/Card';
 import Animals from '../../assets/animals/index';
@@ -7,39 +11,53 @@ import Animals from '../../assets/animals/index';
 import { ActionCreator as ActionCards } from '../../actions/cards';
 
 import {
-  ActionsCards,
   Card as CardType,
   State as StateType,
 } from '../../shared/types';
 
-type Dispatch = (arg: ActionsCards) => void;
-
 type Props = {
-  firstOpenCard: CardType | null;
   card: CardType;
-  isPlay: boolean;
-  secondOpenCard: CardType | null;
-  setFirstOpenCard: (card: CardType) => void;
-  setSecondOpenCard: (card: CardType) => void;
 }
 
-const CardFlip: React.FC<Props> = ({ firstOpenCard, card, isPlay, setFirstOpenCard, setSecondOpenCard, secondOpenCard }: Props) => {
-  const onClickCard = () => {
-    if (!isPlay || secondOpenCard) {
-      return false;
-    } else if (firstOpenCard) {
-      setSecondOpenCard(openCard);
-    } else {
-      setFirstOpenCard(openCard);
-    }
+const CardFlip: React.FC<Props> = ({ card }: Props) => {
+  const dispatch = useDispatch();
 
-    return true;
-  };
+  const firstOpenCard = useSelector((state: StateType) => state['CARDS'].firstOpenCard, shallowEqual);
+  const secondOpenCard = useSelector((state: StateType) => state[`CARDS`].secondOpenCard, shallowEqual);
+  const isPlay = useSelector((state: StateType) => state['TIMER'].isActive);
 
   const openCard: CardType = ({
     ...card,
     isFlip: true,
   });
+
+  const onClickCard = () => {
+    if (!isPlay || secondOpenCard) {
+      return false;
+    } else if (firstOpenCard) {
+      const check = () => {
+        dispatch(ActionCards.checkMatchCards());
+        dispatch(ActionCards.resetOpenCards());
+      };
+
+      dispatch(ActionCards.setSecondOpenCard(
+          openCard
+      ));
+      dispatch(ActionCards.setFlipCard(
+          openCard.id
+      ));
+      setTimeout(check, 700);
+    } else {
+      dispatch(ActionCards.setFirstOpenCard(
+          openCard
+      ));
+      dispatch(ActionCards.setFlipCard(
+          openCard.id
+      ));
+    }
+
+    return true;
+  };
 
   const frontRotateY = `rotateY(${
     card.isFlip ? 0 : -180
@@ -83,39 +101,4 @@ const CardFlip: React.FC<Props> = ({ firstOpenCard, card, isPlay, setFirstOpenCa
   );
 };
 
-const mapStateToProps = (state: StateType) => ({
-  cards: state[`CARDS`].cards,
-  firstOpenCard: state['CARDS'].firstOpenCard,
-  secondOpenCard: state[`CARDS`].secondOpenCard,
-  isPlay: state['TIMER'].isActive,
-});
-
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  setFirstOpenCard: (card: CardType) => {
-    dispatch(ActionCards.setFirstOpenCard(
-        card
-    ));
-    dispatch(ActionCards.setFlipCard(
-        card.id
-    ));
-  },
-  setSecondOpenCard: (card: CardType) => {
-    const check = () => {
-      dispatch(ActionCards.checkMatchCards());
-      dispatch(ActionCards.resetOpenCards());
-    };
-
-    dispatch(ActionCards.setSecondOpenCard(
-        card
-    ));
-    dispatch(ActionCards.setFlipCard(
-        card.id
-    ));
-    setTimeout(check, 700);
-  },
-});
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps,
-)(CardFlip);
+export default CardFlip;

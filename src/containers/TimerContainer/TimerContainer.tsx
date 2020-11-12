@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import {
+  useDispatch,
+  useSelector,
+} from 'react-redux';
 import { useInterval } from 'react-use';
 
 import Timer from '../../components/Timer/Timer';
@@ -7,24 +10,20 @@ import { ActionCreator as ActionTimer } from '../../actions/timer';
 
 import { ONE_SEC } from '../../shared/consts';
 import {
-  ActionsTimer,
   State as StateType
 } from '../../shared/types';
 import { formatTime } from '../../shared/utils';
 
-type Dispatch = (arg: ActionsTimer) => void;
+const TimerContainer: React.FC = () => {
+  const dispatch = useDispatch();
 
-type Props = {
-  bestTime: number;
-  isActive: boolean;
-  setTime: (time: number) => void;
-  time: number;
-}
+  const bestTime = useSelector((state: StateType) => state['TIMER'].bestTime);
+  const isActive = useSelector((state: StateType) => state['TIMER'].isActive);
+  const time = useSelector((state: StateType) => state['TIMER'].time);
 
-const TimerContainer: React.FC<Props> = ({ bestTime, isActive, setTime, time }: Props) => {
   useInterval(
       () => {
-        setTime(time + 1);
+        dispatch(ActionTimer.setTime(time + 1));
       },
       isActive ? ONE_SEC : null
   );
@@ -38,20 +37,4 @@ const TimerContainer: React.FC<Props> = ({ bestTime, isActive, setTime, time }: 
 };
 
 
-const mapStateToProps = (state: StateType) => ({
-  bestTime: state['TIMER'].bestTime,
-  isActive: state['TIMER'].isActive,
-  time: state['TIMER'].time,
-});
-
-
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  setTime: (time: number) => {
-    dispatch(ActionTimer.setTime(time));
-  }
-});
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(TimerContainer);
+export default TimerContainer;

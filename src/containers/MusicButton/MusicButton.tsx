@@ -4,6 +4,8 @@ import { useAudio } from 'react-use';
 import Button from '../../components/Button/Button';
 
 import { ReactComponent as Music } from '../../assets/icons/music.svg';
+import { ReactComponent as MusicOff } from '../../assets/icons/music-off.svg';
+
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const music = require('../../assets/audio/music.mp3');
 
@@ -13,14 +15,17 @@ const MusicButton: React.FC = () => {
     loop: true
   });
   const [isMusicOn, setMusicOn] = useState(false);
+  const [iconMusic, setIconMusic] = useState(<Music />);
 
   const controlMusic = () => {
     if (isMusicOn) {
-      controls.pause();
       setMusicOn(false);
+      setIconMusic(<Music />);
+      controls.pause();
     } else {
-      controls.play();
       setMusicOn(true);
+      setIconMusic(<MusicOff />);
+      controls.play();
     }
   };
 
@@ -32,7 +37,7 @@ const MusicButton: React.FC = () => {
         title={`Music`}
         prefix={`icon`}
       >
-        <Music />
+        {iconMusic}
       </Button>
     </>
   );

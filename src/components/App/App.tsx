@@ -7,9 +7,9 @@ import {
 
 import { AppRoute } from '../../shared/routes';
 
-import MainScreen from '../Main-Screen/MainScreen';
 import GameScreen from '../Game-Screen/GameScreen';
 import HighScoreScreen from '../High-Score-Screen/HighScoreScreen';
+import MainScreen from '../Main-Screen/MainScreen';
 
 const App: React.FC = () => {
   return (

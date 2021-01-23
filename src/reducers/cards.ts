@@ -3,7 +3,7 @@ import { ActionType } from '../actions/cards';
 import {
   ActionsCards,
   Card as CardType,
-  CardsReducer as CardsReducerType,
+  CardsReducer as CardsReducerType
 } from '../shared/types';
 import { shuffle } from '../shared/utils';
 
@@ -142,7 +142,7 @@ const reducer = (state: CardsReducerType = initialState, action: ActionsCards): 
 
         return {
           ...state,
-          cards: checkMatchCards(state.cards, isMatch, state.firstOpenCard.id, state.secondOpenCard.id)
+          cards: checkMatchCards(state.cards, isMatch, state.firstOpenCard.id, state.secondOpenCard.id),
         };
       } else {
         return state;
@@ -162,12 +162,10 @@ const reducer = (state: CardsReducerType = initialState, action: ActionsCards): 
       };
 
     case ActionType.SET_NUMBER_OF_CARD:
-      const cards = getCards(action.numberOfCards);
-
       return {
         ...state,
 
-        cards,
+        cards: getCards(action.numberOfCards),
         numberOfCards: action.numberOfCards,
       };
 
@@ -203,5 +201,5 @@ const reducer = (state: CardsReducerType = initialState, action: ActionsCards): 
 };
 
 export {
-  reducer,
+  reducer
 };

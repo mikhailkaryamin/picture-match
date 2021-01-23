@@ -44,5 +44,5 @@ const reducer = (state: TimerType = initialState, action: ActionsTimer): TimerTy
 };
 
 export {
-  reducer,
+  reducer
 };

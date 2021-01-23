@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   useDispatch,
-  useSelector,
+  useSelector
 } from 'react-redux';
 
 import Button from '../../components/Button/Button';

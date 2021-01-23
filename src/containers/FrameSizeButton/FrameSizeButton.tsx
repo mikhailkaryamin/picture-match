@@ -34,7 +34,7 @@ const ButtonFrameSize: React.FC<Props> = ({ sizeFrame }: Props) => {
       onClick={() => {
         dispatch(ActionCards.setFrameSize(FrameSize[sizeFrame]));
         dispatch(ActionCards.setNumberOfCards(
-            FrameSize[sizeFrame][0] * FrameSize[sizeFrame][1]
+          FrameSize[sizeFrame][0] * FrameSize[sizeFrame][1],
         ));
       }}
       prefix={'size-frame'}

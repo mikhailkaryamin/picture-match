@@ -1,5 +1,5 @@
 {
-  "extends": ["htmlacademy/es6", "plugin:react/recommended", "plugin:@typescript-eslint/recommended"],
+  "extends": ["htmlacademy/vanilla", "plugin:react/recommended", "plugin:@typescript-eslint/recommended"],
   "plugins": ["react", "@typescript-eslint"],
   "parserOptions":{
     "ecmaFeatures": {
@@ -14,15 +14,16 @@
       "allowTemplateLiterals": true
       }],
     "no-use-before-define": "off",
-    "@typescript-eslint/no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["off"],
     "object-curly-spacing": ["error", "always"]
   },
 
   "overrides": [
     {
-      "files": ["**/*.ts?(x)"]
+      "files": ["**/*.ts?(x)"],
     }
   ],
+  "ignorePatterns": "*.js",
   "settings": {
     "react": {
       "version": "detect"

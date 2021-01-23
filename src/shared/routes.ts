@@ -1,9 +1,9 @@
 const AppRoute = {
   MAIN: '/',
   GAME: '/game',
-  HIGH_SCORE: '/top-list'
+  HIGH_SCORE: '/top-list',
 };
 
 export {
-  AppRoute,
+  AppRoute
 }

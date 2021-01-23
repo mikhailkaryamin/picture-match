@@ -2,7 +2,7 @@ import React from 'react';
 import {
   useDispatch,
   shallowEqual,
-  useSelector,
+  useSelector
 } from 'react-redux';
 
 import CardFlip from '../CardFlip/CardFlip';
@@ -11,7 +11,7 @@ import EndGame from '../../components/End-Game/End-Game';
 import { ActionCreator as ActionTimer } from '../../actions/timer';
 
 import {
-  State as StateType,
+  State as StateType
 } from '../../shared/types';
 import { formatTime } from '../../shared/utils';
 

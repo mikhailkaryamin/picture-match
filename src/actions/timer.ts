@@ -1,6 +1,6 @@
 import {
   Action as ActionWithoutPayload,
-  ActionsTimer,
+  ActionsTimer
 } from '../shared/types';
 
 const ActionType = {
@@ -33,5 +33,5 @@ const ActionCreator = {
 
 export {
   ActionCreator,
-  ActionType,
+  ActionType
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import {
   useDispatch,
   shallowEqual,
-  useSelector,
+  useSelector
 } from 'react-redux';
 
 import Card from '../../components/Card/Card';
@@ -12,7 +12,7 @@ import { ActionCreator as ActionCards } from '../../actions/cards';
 
 import {
   Card as CardType,
-  State as StateType,
+  State as StateType
 } from '../../shared/types';
 
 type Props = {
@@ -41,18 +41,18 @@ const CardFlip: React.FC<Props> = ({ card }: Props) => {
       };
 
       dispatch(ActionCards.setSecondOpenCard(
-          openCard
+        openCard,
       ));
       dispatch(ActionCards.setFlipCard(
-          openCard.id
+        openCard.id,
       ));
       setTimeout(check, 700);
     } else {
       dispatch(ActionCards.setFirstOpenCard(
-          openCard
+        openCard,
       ));
       dispatch(ActionCards.setFlipCard(
-          openCard.id
+        openCard.id,
       ));
     }
 

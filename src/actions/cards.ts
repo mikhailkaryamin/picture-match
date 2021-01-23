@@ -1,6 +1,6 @@
 import {
   ActionsCards,
-  Card as CardType,
+  Card as CardType
 } from '../shared/types';
 
 const ActionType = {
@@ -55,5 +55,5 @@ const ActionCreator = {
 
 export {
   ActionCreator,
-  ActionType,
+  ActionType
 };

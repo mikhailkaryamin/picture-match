@@ -79,6 +79,6 @@ const Animals = {
   TURTLE: {
     srcImg: turtle,
     title: 'Turtle',
-  }};
+  } };
 
 export default Animals;

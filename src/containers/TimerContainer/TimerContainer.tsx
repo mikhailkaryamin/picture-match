@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   useDispatch,
-  useSelector,
+  useSelector
 } from 'react-redux';
 import { useInterval } from 'react-use';
 
@@ -22,10 +22,10 @@ const TimerContainer: React.FC = () => {
   const time = useSelector((state: StateType) => state['TIMER'].time);
 
   useInterval(
-      () => {
-        dispatch(ActionTimer.setTime(time + 1));
-      },
-      isActive ? ONE_SEC : null
+    () => {
+      dispatch(ActionTimer.setTime(time + 1));
+    },
+    isActive ? ONE_SEC : null,
   );
 
   return (

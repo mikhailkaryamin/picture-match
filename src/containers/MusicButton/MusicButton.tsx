@@ -12,7 +12,7 @@ const music = require('../../assets/audio/music.mp3');
 const MusicButton: React.FC = () => {
   const [audio,, controls] = useAudio({
     src: `${music}`,
-    loop: true
+    loop: true,
   });
   const [isMusicOn, setMusicOn] = useState(false);
   const [iconMusic, setIconMusic] = useState(<Music />);

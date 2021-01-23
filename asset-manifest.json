@@ -1,0 +1,43 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f4a9edaf.chunk.css",
+    "main.js": "/static/js/main.8ed13872.chunk.js",
+    "main.js.map": "/static/js/main.8ed13872.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.3544773a.js",
+    "runtime-main.js.map": "/static/js/runtime-main.3544773a.js.map",
+    "static/js/2.71a85d07.chunk.js": "/static/js/2.71a85d07.chunk.js",
+    "static/js/2.71a85d07.chunk.js.map": "/static/js/2.71a85d07.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.f4a9edaf.chunk.css.map": "/static/css/main.f4a9edaf.chunk.css.map",
+    "static/js/2.71a85d07.chunk.js.LICENSE.txt": "/static/js/2.71a85d07.chunk.js.LICENSE.txt",
+    "static/media/index.scss": "/static/media/Bangers-Regular.62caecd7.ttf",
+    "static/media/back.8026a3af.svg": "/static/media/back.8026a3af.svg",
+    "static/media/bear.faa0f92d.svg": "/static/media/bear.faa0f92d.svg",
+    "static/media/bee.ff99f383.svg": "/static/media/bee.ff99f383.svg",
+    "static/media/chicken.d3d3bb82.svg": "/static/media/chicken.d3d3bb82.svg",
+    "static/media/dog.0c122234.svg": "/static/media/dog.0c122234.svg",
+    "static/media/elephant.6314b45e.svg": "/static/media/elephant.6314b45e.svg",
+    "static/media/flamingo.de482c84.svg": "/static/media/flamingo.de482c84.svg",
+    "static/media/frog.c94b4340.svg": "/static/media/frog.c94b4340.svg",
+    "static/media/giraffe.c9219718.svg": "/static/media/giraffe.c9219718.svg",
+    "static/media/horse.2f91da6f.svg": "/static/media/horse.2f91da6f.svg",
+    "static/media/koala.17eb930a.svg": "/static/media/koala.17eb930a.svg",
+    "static/media/lion.8ad24d46.svg": "/static/media/lion.8ad24d46.svg",
+    "static/media/music-off.bbded5eb.svg": "/static/media/music-off.bbded5eb.svg",
+    "static/media/music.mp3": "/static/media/music.52902fac.mp3",
+    "static/media/music.7ccfbdd0.svg": "/static/media/music.7ccfbdd0.svg",
+    "static/media/owl.462e238e.svg": "/static/media/owl.462e238e.svg",
+    "static/media/pause.649297ef.svg": "/static/media/pause.649297ef.svg",
+    "static/media/pig.df30287b.svg": "/static/media/pig.df30287b.svg",
+    "static/media/play.009ed6e0.svg": "/static/media/play.009ed6e0.svg",
+    "static/media/restart.f7b39dba.svg": "/static/media/restart.f7b39dba.svg",
+    "static/media/spider.2f0ed8ba.svg": "/static/media/spider.2f0ed8ba.svg",
+    "static/media/turtle.357877dc.svg": "/static/media/turtle.357877dc.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3544773a.js",
+    "static/js/2.71a85d07.chunk.js",
+    "static/css/main.f4a9edaf.chunk.css",
+    "static/js/main.8ed13872.chunk.js"
+  ]
+}
